@@ -1,0 +1,55 @@
+1.1: IsUnique
+If you can't use additional data structures, ask what type of character set is, because it is
+limited. The idea is to create an array with that length, and loop through all the characters
+and increment the array[character value], and see if it is at 0 before you increment.
+
+1.2 Check Permutation
+Same idea as 1.1, keep a character array of counts, but for another one decrement. On each
+character, check if after the decrement the count is not zero.
+
+1.3 URLify
+We are given the true length and are given a character array. Iterate through the string,
+(via the true length count) and count how many spaces there are. The total length will be
+trueLength + spaceCount * 2 (since 3 - 1 is 2), and then you iterate back from the two
+indices. One for the modified string array, and one from the original character.
+
+1.4 Palindrome Permutation
+Same idea as 1.1, 1.2, put it in a character array. For palindromes with odd numbers (you can
+keep a count of how many characters there are), you see if theres an index with the value 1, and
+the rest are even. For even numbers, you see if every value is even, then it's possible.
+
+Improvement: Since odd + odd is even, regardless if the length is even or odd, you're allowed
+at most one character who has an odd count, because it's impossible to have an even count if
+you have even length. For odd lengths, only 1 suffices, so you only have to do one check.
+Eg. even amount of characters (4), aaab, will result in two odd counts, its impossible to have
+one.
+
+1.5 One away
+split by case. If size is off by one, then it is either insert/replace. Do the same as above,
+have a character array, and decrement on the second word, and only one word can have a count
+of one.
+
+If it is the same length, then you can assume that a character has been replaced, meaning that
+there can only be two indices with a value of one.
+
+^^ you can also iterate through each character and just adjust the indices given the type of edit,
+and keep track if you have already encountered the edit before.
+
+1.6 String Compression
+Compress the string, then compare.
+Compress: Don't concatenate, use StringBuilder.
+
+Have an slow_ptr and a fast_ptr, where fast_ptr sets the boundaries to check that there's no
+index out of bounds exception. slow_ptr points at the head, and fast_ptr compares everything ahead,
+then use the count to increment the slow_ptr, and set the fast_ptr to the slow_ptr + 1. At each
+iteration, use StringBuilder to build the string and the counts.
+
+1.7 Rotate Matrix
+(see M73-RotateImage.java)
+
+1.8 Zero matrix
+(see M48-SetMatrixZeros.java)
+
+1.9 String Rotation
+because the string is a rotation at a certain point, you concatenate it to itself, and try
+isSubstring on the entire string.
