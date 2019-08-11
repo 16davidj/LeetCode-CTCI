@@ -1,0 +1,29 @@
+CHAPTER 2: LINKED LISTS
+
+2.1: Remove Dups
+If you're allowed a temporary buffer, iterate through the linked list one by one, and add each
+next value to a HashSet. Before adding, check if it already is. If the next value is already in
+the hashSet, delete it by skipping over the pointer.
+
+If an extra value is not allowed, use two pointers. The first pointer will iterate one by one, and
+for each one, the other pointer will move ahead one by one through the entire list and delete each
+repeat. This will take O(N^2) time, while the other takes O(N) time and O(N) space complexity.
+(see M82-RemoveDuplicatesFromSortedListII.java, E83-RemoveDuplicatesFromSortedListII for a similar
+problem)
+
+2.2: Return Kth to Last element
+Have two pointers. Have a fast pointer be k steps ahead of the slow one. When the last one reaches
+the end, the first one will be k elements away from the end.
+(see M19-RemoveNthNodeFromEndOfList)
+
+2.3 Delete Middle Node
+Delete the current val by setting the node's val to the next one's val, and then deleting the
+next node.
+(see E237-DeleteMiddleNodeInLinkedList)
+
+2.4 Partition
+Create two different lists, one for the left side of the partition, one on the right side.
+Iterate through each element of the list, and add to either list, then merge at the end.
+(see M86-PartitionList)
+
+2.5 Sum Lists

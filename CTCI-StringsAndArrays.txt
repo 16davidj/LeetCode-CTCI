@@ -1,3 +1,5 @@
+CHAPTER 1: STRINGS AND ARRAYS
+
 1.1: IsUnique
 If you can't use additional data structures, ask what type of character set is, because it is
 limited. The idea is to create an array with that length, and loop through all the characters
@@ -53,3 +55,4 @@ iteration, use StringBuilder to build the string and the counts.
 1.9 String Rotation
 because the string is a rotation at a certain point, you concatenate it to itself, and try
 isSubstring on the entire string.
+(see E796-RotateString.java)
