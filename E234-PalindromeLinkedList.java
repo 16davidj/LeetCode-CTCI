@@ -6,7 +6,8 @@ Description:
 Given a singly linked list, determine if it is a palindrome.
 
 Solution:
-get the length of each list, pad the shorter one with zeros, use a stack
+go to the halfway point. It doesn't matter if the length of the list is odd or even (draw out both
+scenarios). Then compare the head with the new reversed list based on the reversed list's length.
 
 Runtime:
 
