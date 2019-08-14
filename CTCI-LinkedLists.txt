@@ -33,6 +33,23 @@ Basic question: create another linked list, and also use a carry-over variable.
 Follow-up: what if they were reversed (meaning the end is the one's digit)?
 (see M445-AddTwoNumbersII.java)
 
-2.6 palindromes
+2.6 Palindrome
 go halfway, reverse the right half, then check from there
 (see E234-PalindromeLinkedList.java)
+
+2.7 Intersection
+you can tell if they intersect if the last node is equal by reference. You can check which node
+intersects by making both lists the same length, and then pad the front until the first reference
+is equal (pad the shorter list).
+(see E160-IntersectionTwoLinkedLists.java)
+
+2.8 Loop Detection
+(see E141-LinkedListCycle.java) and (M142-LinkedListCycleII.java)
+How to detect there is a linked list: fast and slow pointer. You shouldn't be concernerd that
+the fast pointer will jump over the slow pointer, since that would mean a jump is: the fast is at
+i+1th node, while the slow is at slow. Well, that means that the step before, the fast was at
+(i+1)-2 = i-1, meanwhile, the slow is at i-1.
+
+Part 2: How to find where the cycle starts?
+difference between how much fast travels and how much slow travels is the difference between
+the total length and the length of the portion before the cycle.
