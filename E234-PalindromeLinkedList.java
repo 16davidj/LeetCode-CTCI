@@ -9,7 +9,7 @@ Solution:
 go to the halfway point. It doesn't matter if the length of the list is odd or even (draw out both
 scenarios). Then compare the head with the new reversed list based on the reversed list's length.
 
-Runtime:
+Runtime: O(N): runtime is correlated to how many nodes there are in a linked list
 
 */
 
