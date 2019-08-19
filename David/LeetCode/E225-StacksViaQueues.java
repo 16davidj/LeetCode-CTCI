@@ -10,58 +10,43 @@ pop() -- Removes the element on top of the stack.
 top() -- Get the top element.
 empty() -- Return whether the stack is empty.
 
-Solution: see E232, same solution, but using queue.
-
+Solution:
+Different concept, pushing takes O(n), as you push the newest element to the front of the queue by
+removing all the other elements and adding them to the back. Then, popping is O(1), as you just
+take from the beginning.
 
 */
 
 class MyStack {
     Queue<Integer> queue;
-    Queue<Integer> reverseQueue;
-    int populated;
     /** Initialize your data structure here. */
     public MyStack() {
-      queue = new Queue<Integer>();
-      reverseQueue = new Queue<Integer>();
-      populated = -1;
+      queue = new LinkedList<Integer>();
     }
 
     /** Push element x onto stack. */
     public void push(int x) {
-      if(populated == 1) {
-        while(!reverseQueue.isEmpty()) {
-          queue.push(reverseQueue.pop());
-        }
+      int size = queue.size();
+      queue.add(x);
+      while(size > 0) {
+        queue.add(queue.poll());
+        size--;
       }
-      queue.push(x);
-      populated = 0;
     }
 
     /** Removes the element on top of the stack and returns that element. */
     public int pop() {
-      if(populated == 0) {
-        while(!queue.isEmpty()) {
-          reverseQueue.push(queue.pop());
-        }
-      }
-      populated = 1;
-      return reverseQueue.pop();
+      return queue.poll();
     }
 
     /** Get the top element. */
     public int top() {
-      if(populated == 0) {
-        while(!queue.isEmpty()) {
-          reverseQueue.push(queue.pop());
-        }
-      }
-      populated = 1;
-      return reverseQueue.peek();
+      return queue.peek();
     }
 
     /** Returns whether the stack is empty. */
     public boolean empty() {
-      return reverseQueue.isEmpty() && queue.isEmpty();
+      return queue.isEmpty();
     }
 }
 

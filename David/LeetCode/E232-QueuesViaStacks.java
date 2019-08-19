@@ -33,13 +33,13 @@ class MyQueue {
 
     /** Push element x to the back of queue. */
     public void push(int x) {
-      if(populated == -1 || populated == 0) {
-        stack.push(x);
-      } else {
+      if(populated == 1)
+      {
         while(!reverseStack.isEmpty()) {
           stack.push(reverseStack.pop());
         }
       }
+      stack.push(x);
       populated = 0;
     }
 
@@ -50,8 +50,8 @@ class MyQueue {
           reverseStack.push(stack.pop());
         }
       }
-      return reverseStack.pop();
       populated = 1;
+      return reverseStack.pop();
     }
 
     /** Get the front element. */
@@ -61,8 +61,8 @@ class MyQueue {
           reverseStack.push(stack.pop());
         }
       }
-      return reverseStack.peek();
       populated = 1;
+      return reverseStack.peek();
     }
 
     /** Returns whether the queue is empty. */

@@ -39,7 +39,9 @@ is the reverse order.
 (see E232-QueueViaStacks)
 
 Also do: Stack via Queue:
-Same concept, except switch roles.
+Different concept, pushing takes O(n), as you push the newest element to the front of the queue by
+removing all the other elements and adding them to the back. Then, popping is O(1), as you just
+take from the beginning.
 (see E225-StacksViaQueues)
 
 3.5 Sort Stack

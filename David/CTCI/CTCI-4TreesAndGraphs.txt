@@ -1,0 +1,13 @@
+4.1 Route between nodes
+Run BFS from both nodes, and if they both touch the same node, return true. If BFS ends and they
+don't touch, then there is no route.
+
+Or just run BFS and see if the other node is in the visited list.
+
+4.2 Minimal Tree
+Get the middle as the root, and then run the function on the left and right side, with the resulting
+trees being the left and right children. (Recursive)
+
+(see E108-ConvertSortedArrayToBST) and (M109-ConvertSortedListToBST)
+
+4.3 List of Depths
