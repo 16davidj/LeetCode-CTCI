@@ -11,3 +11,29 @@ trees being the left and right children. (Recursive)
 (see E108-ConvertSortedArrayToBST) and (M109-ConvertSortedListToBST)
 
 4.3 List of Depths
+Have a hashMap that maps from depth to linkedList for that depth. Have a recursive function taking
+in TreeNode and depth of that node, which adds to the hashMap, then recursively call the function
+on its children with a depth that is 1 greater.
+
+4.4 Check Balanced
+use a helper function to not only explore the tree, but also pass up a value that
+is either the height of the tree, or is -1 (meaning that the tree is not balanced). If -1 is
+returned, you pop that -1 up to the original root and return that. If not, keep passing up the
+heights, which will allow each level to compare the heights of the left or right child.
+(see E110-BalancedBinaryTree)
+
+4.5 Validate BST
+Use recursion: it is not sufficient to check that root.left.val < current < root.right.val for
+each node (draw an example, head root = 4, sub root = 3, but root.right.val = 100000000). Thus, we
+need to make a upper and lower bound for each node, and update those bounds every time you
+traverse a new level. The bounds are set by the parent node, since the everything on the left
+of a parent node must be less, and everything on the right of the node must be greater.
+(see M98-ValidateBST)
+
+4.6 Successor
+The successor will always be the leftmost child of the right subtree. However, if a right subtree
+doesn't exist, then we are done with the in-order traversal (left, current, right), and we go up
+to the parent. If the node was the left-child, then we return the parent, as the next node you
+view is the current, or parent. If the node was the right-child, then you keep moving up until the
+node is no longer the right child of the parent.
+see (M285-InOrderSuccessorBST) and (M510-InOrderSuccessorBSTII)
