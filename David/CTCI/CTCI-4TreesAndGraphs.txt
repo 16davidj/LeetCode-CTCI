@@ -36,4 +36,15 @@ doesn't exist, then we are done with the in-order traversal (left, current, righ
 to the parent. If the node was the left-child, then we return the parent, as the next node you
 view is the current, or parent. If the node was the right-child, then you keep moving up until the
 node is no longer the right child of the parent.
-see (M285-InOrderSuccessorBST) and (M510-InOrderSuccessorBSTII)
+(see M285-InOrderSuccessorBST and M510-InOrderSuccessorBSTII)
+
+4.7 Build Order
+This is essentially a dependency graph. Create a graph with all the projects. Then, remove
+each node that doesn't have any outgoing links (essentially adding them to the build order), and
+remove the edges that are going into that node.
+
+4.8 First Common Ancestor
+Essentially a DFS for the nodes you want to find, but when you find them, populate them up.
+At some point, the two populated nodes will meet as right and left at a root node, and then
+you want to populate that root node up and eventually return it. (solution for M236-LCAofBT)
+(see E235-LCAofBST and M236-LCAofBT)
