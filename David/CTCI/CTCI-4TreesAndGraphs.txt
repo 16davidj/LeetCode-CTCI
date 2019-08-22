@@ -46,5 +46,9 @@ remove the edges that are going into that node.
 4.8 First Common Ancestor
 Essentially a DFS for the nodes you want to find, but when you find them, populate them up.
 At some point, the two populated nodes will meet as right and left at a root node, and then
-you want to populate that root node up and eventually return it. (solution for M236-LCAofBT)
+you want to populate that root node up and eventually return it. (this is solution for M236-LCAofBT)
 (see E235-LCAofBST and M236-LCAofBT)
+
+4.9 BST Sequences
+
+(similar topic questions, but not the same: M95-UniqueBSTII and M96-UniqueBST)
