@@ -50,5 +50,8 @@ you want to populate that root node up and eventually return it. (this is soluti
 (see E235-LCAofBST and M236-LCAofBT)
 
 4.9 BST Sequences
-
+See CTCI solution: You want to recursively weave each solution after popping off the root and
+adding it to the prefix.
 (similar topic questions, but not the same: M95-UniqueBSTII and M96-UniqueBST)
+
+4.10
