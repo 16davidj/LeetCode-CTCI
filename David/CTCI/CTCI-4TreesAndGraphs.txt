@@ -54,4 +54,28 @@ See CTCI solution: You want to recursively weave each solution after popping off
 adding it to the prefix.
 (similar topic questions, but not the same: M95-UniqueBSTII and M96-UniqueBST)
 
-4.10
+4.10 Check Subtree
+Use recursion. Create one recursive function to check if two trees are equal, and use another
+recursive function to traverse the tree and compare each root and the child nodes with the equals
+function.
+
+You need the equals function because if you try to do the traversal and equals check within the
+same function recursively, in the example where the root is equal but the children are not, then
+you return false without checking any of the other nodes, which doesn't work for trees with
+duplicate values in the node.
+
+(see E572-SubtreeOfAnotherTree)
+
+4.11 Random Node
+The solution is that each node should have a size variable. This is because we want to balance
+out the odds for each node, regardless of depth. Each node has a 1/n chance of being picked,
+and you have a (Size of left subtree)/(size of current tree) chance to go left and vice versa for
+the right. You don't need to call Math.rand for every move to see where you move. You can call
+math.rand once, and if the value is less than leftSize, then go left. If it is greater than
+leftSize, subtract (leftSize + 1) from the value and go right (pretend it's like an index).
+
+(similar, but for a linked list: M382-LinkedListRandomNode)
+
+4.12: Paths with Sum
+
+(see E112-PathSum, M113-PathSumII, E437-PathSumIII [this is the actual 4.12 question])
