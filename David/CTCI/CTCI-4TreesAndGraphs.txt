@@ -77,5 +77,12 @@ leftSize, subtract (leftSize + 1) from the value and go right (pretend it's like
 (similar, but for a linked list: M382-LinkedListRandomNode)
 
 4.12: Paths with Sum
+Have a recursive helper that helps you count. If the root.val = sum, then you increment the count
+by 1, but don't stop there, it is possible that there can still be a path that builds on the
+current one, even if the sum = 0, which is why you recursively call the helper on left and right,
+but subtract the root value.
+
+For the main function, you want to do pathSumHelper on the root to find any routes that start
+from the root, but also want to recursively call pathSum to find roots that start on subtrees.
 
 (see E112-PathSum, M113-PathSumII, E437-PathSumIII [this is the actual 4.12 question])
