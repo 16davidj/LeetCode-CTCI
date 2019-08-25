@@ -1,14 +1,10 @@
-TODO: https://leetcode.com/problems/k-closest-points-to-origin/ (see M973-KClosestPointsToOrigin)
+/*
+Difficulty: Medium
+Problem Link: https://leetcode.com/problems/group-anagrams/
 
-10.1 Sorted Merge
+Description: Given an array of strings, group anagrams together.
 
-Work for the back, and insert the elements from each end of both arrays. This is because the back
-is empty, so inserting an element in the back won't change anything. Also keep indices to keep
-track of which index you are at for each array. If you insert in the front, you would have to
-shift everything back.
-(see E88-MergeSortedArray) similar: (E21-Merge2SortedLists.java)
-
-10.2 Group Anagrams
+Solution:
 Note: Going through a string array and sorting all the strings, then sorting the entire array is
 a O(n log n). Why? Imagine there are s strings in the array, and each string is m characters long.
 In order to sort each string in the array, it is a O(s) * O(m log m) = O(s*m log m)
@@ -28,8 +24,33 @@ O(ms log s) and O(m) space. Choose the latter.
 Sort each string, and put the strings in a map, then go through the key entries of the map and
 convert it to a list.
 
-(see M49-GroupAnagrams.java)
+*Where there are s strings in the array, and each string is m characters long.
+Runtime: O(ms log s)
 
-10.3 Search in Rotated Array
+Space Complexity: O(m)
+*/
 
-(see M33-SearchInRotatedSortedArray.java)
+public List<List<String>> groupAnagrams(String[] strs) {
+  List<List<String>> res = new ArrayList<>();
+  Map<String, List<String>> map = new HashMap<>();
+  for(String s : strs) {
+    String sortedS = sort(s);
+    if(map.get(sortedS) == null) {
+      List<String> list = new ArrayList<>();
+      list.add(s);
+      map.put(sortedS, list);
+    } else {
+      map.get(sortedS).add(s);
+    }
+  }
+  for(String s : map.keySet()) {
+    res.add(map.get(s));
+  }
+  return res;
+}
+
+private String sort(String s) {
+  char[] charArr = s.toCharArray();
+  Arrays.sort(charArr);
+  return new String(charArr);
+}
