@@ -11,15 +11,44 @@ You may return the answer in any order.  The answer is guaranteed to be unique (
 order that it is in.)
 
 Solution:
-*Note that you can solve this in the same fashion as M347, but that is O(n log k) fashion,
-select sorting will solve it in O(n).
+very similar to M347, for the comparator, put the smallest at the end, to ensure that they
+remain in the PQ when being popped from.
 
-Runtime:
+Runtime: O(n log k): The PQ is size k, so it will take n log k to add and poll
 
-Space Complexity:
+Space Complexity: O(k): the PQ is max size of k
 
 */
+public class Point {
+  int x;
+  int y;
+  public Point(int x, int y) {
+    this.x = x;
+    this.y = y;
+  }
+}
 
 public int[][] kClosest(int[][] points, int K) {
+  int[][] results = new int[K][];
+  PriorityQueue<Point> pq = new PriorityQueue<>(
+    (a, b) -> a.x*a.x + a.y*a.y > b.x*b.x + b.y*b.y ? -1 : 1
+  );
+  for(int[] arr : points) {
+    Point p = new Point(arr[0], arr[1]);
+    pq.offer(p);
+    if(pq.size() > K) {
+      pq.poll();
+    }
+  }
 
+  int index = 0;
+  while(pq.size() > 0) {
+    Point p = pq.poll();
+    int[] point = new int[2];
+    point[0] = p.x;
+    point[1] = p.y;
+    results[index] = point;
+    index++;
+  }
+  return results;
 }

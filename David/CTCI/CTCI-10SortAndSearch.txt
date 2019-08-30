@@ -1,5 +1,3 @@
-TODO: https://leetcode.com/problems/k-closest-points-to-origin/ (see M973-KClosestPointsToOrigin)
-
 10.1 Sorted Merge
 
 Work for the back, and insert the elements from each end of both arrays. This is because the back
@@ -31,5 +29,40 @@ convert it to a list.
 (see M49-GroupAnagrams.java)
 
 10.3 Search in Rotated Array
-
+The basic solution is that every time you split the array in half, there will be at least one side
+that is sorted. Check the sorted side to see if the target belongs there, if not, go to the other
+side. (so it's modified binary search, and instead of just comparing the target to the middle,
+you have to compare the target to both sides to see where it may lie.)
 (see M33-SearchInRotatedSortedArray.java)
+
+10.4 Sorted Search
+
+Binary search takes O(log n). We want to leverage this fact to do some preprocessing in log n time.
+We want to binary search, but we don't know the high value, so it's hard to find the mid. If you
+use a slo and fast pointer, you would only find the mid in O(n/2) time, which makes it O(n). Thus,
+we use the power function. We try to estimate size by squaring 2 repeatedly until you find the
+size value where it is out of bounds (-1). Then, this is the closest size we can find, and you
+do binary search, but different, where if you hit -1, you treat it the same as if it is greater
+than the mid (it is).
+
+(see M702-SearchInASortedArrayUnknownSize)
+
+10.5 Sparse Search
+Modify binary search so that if mid is an empty string, you increase and decrease mid to find the
+closest non-empty string, and go from there. The worst case scenario is O(n), where most of the List
+is empty strings.
+
+10.6 Sort Big File
+RAM vs Storage. If you have a file up to 20 GB in storage, chances are you won't be able to load
+all that into a program and then sort it. therefore, we should probably split it up into more
+manageable chunks (a few MB per file), sort those files, then merge the chunks (it's known as
+external sort, but its pretty similar to merge sort).
+
+10.7 Missing Int
+Since we have 1 GB (8 billion bits) of space, we can create a bit vector with 4 billion values,
+and pass through all of them and set it to 1 if they exist. Then, do a second pass through to
+find the first index.
+
+Follow-up: (see book)
+
+10.8 Find Duplicates
