@@ -1,0 +1,31 @@
+TODO: https://leetcode.com/problems/wiggle-subsequence/
+TODO: https://leetcode.com/problems/letter-combinations-of-a-phone-number/
+TODO: https://leetcode.com/problems/find-median-from-data-stream/
+
+TODO: best time to sell and buy stock
+
+8.1 Triple Step
+Recursively, this problem is pretty intuitive. You have your basic base cases at n <= 0 and n = 1,
+then you want to recursively add tripleStep(n - 1), tripleStep(n - 2), tripleStep(n - 3). However,
+because there are n levels with 3 branches, that is 3^n. We want to use dynamic programming.
+Create an array with n length, n[x] represents the amount of ways you can get to the x stair.
+n[x] will be equal to n[x-1] + n[x-2] + n[x-3]. Obviously set the base cases in the DP array.
+(see E70-ClimbingStairs)
+
+8.2 Robot in a Grid
+
+Do it recursively. You can work backwards, as the first point you should add to the list is the
+origin. This means you start from the destination. You can add to the path recursively if
+one of three conditions is satisfied. getPath(row - 1, c) returns true, getPath(row, c-1) returns
+true, or you are at the Origin. When you are at the origin, you add the point to the list and
+return true. The base case is that if you are out of bounds or on a grid point that is not allowed,
+you return false. If one of getPaths returns true or the origin returns true, you return true and
+the if statement allows you to bubble up, causing the above paths that called getPath to return
+true.
+
+To make this faster, you can use DP/Memoization. Because you have (r-1, c) and (r, c-1), on the
+second step, you'll have (r-1, c-1), which will lead to a lot of revisited points. Thus, create a
+hashSet of failed points that there isn't a path from and stop looking if there isn't a path from
+there.
+
+(similar: M62-UniquePaths)

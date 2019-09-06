@@ -66,3 +66,42 @@ find the first index.
 Follow-up: (see book)
 
 10.8 Find Duplicates
+Use a bit-vector. Because you have 4KB, and each number can be stored in a bit, you have 32,000 bits
+to use.
+
+10.9 Sorted Matrix Search
+Start from either top right or bottom left. This is because at each iteration, it's kind of like
+binary search, where you need to search either half if the target is greater or less than what
+you are right now. With top-right or bottom-left, you can go either less or more (for bottom left,
+going right will increase your value, going up with decrease it). You need it to be either or to
+reduce the matrix because if you to bottom right, the problem is that you'll always be decreasing
+and from the top left, you'll always be increasing.
+
+Bottom-left: If target is less, then go up. If target is more, go right.
+(see M74-SearchA2DMatrixII) (similar: M240-SearchA2DMatrix)
+
+10.10 Rank From Stream
+Create a Rank Node, and create a BST from these nodes. This is your regular node, but it includes
+the size of the left tree. You insert into the tree by calling insert on the tree, and if the node
+lies to the left, then you increment the leftSize of that tree. If the left child is null, insert,
+if not, recursively insert down the left subtree. Do not increment leftSize if you go down the
+right subtree, because you aren't adding to the left subtree. The rank of a specific node is
+dependent on where it lies. If you have to traverse the left subtree, then the rank is just rank of
+the left subtree. If it is the current node, then the rank is just leftSize. If it is the right,
+however, then you do leftSize + 1 + rank of the right
+
+10.11 Peaks and Valleys
+One thing that you can do is have all the odd indices be peaks, and all the even indices be
+valleys. Then, you can imagine the problem as a subproblem. IF you imagine a sequence of 3 values
+(as every peak and valley needs 3 values), you want to make sure you create a valley peak valley
+regardless of the values. The easy way to do this is to find the max of the three and put that in
+the middle. Now that you can do it with three, you want to apply that to the entire list. In order
+to ensure that each odd index follows this rule, you start this rearranging and swapping to a
+valley peak valley from index 1, and increment by 2 every time.
+
+Note: Don't worry about a current rearranging of 3 to affect a past group of three. If you
+are swapping with the left, which is part of a previous three, we know the left is a valley because
+it's an even index. Swapping it with the middle means the middle is smaller than left, so the
+valley is getting even smaller.
+
+similar: (H295-FindMedianFromDataStream)
