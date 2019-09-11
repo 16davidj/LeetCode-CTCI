@@ -1,6 +1,7 @@
 TODO: https://leetcode.com/problems/wiggle-subsequence/
 TODO: https://leetcode.com/problems/letter-combinations-of-a-phone-number/
 TODO: https://leetcode.com/problems/find-median-from-data-stream/
+TODO: https://leetcode.com/problems/permutations/discuss/18239/A-general-approach-to-backtracking-questions-in-Java-(Subsets-Permutations-Combination-Sum-Palindrome-Partioning)
 
 TODO: best time to sell and buy stock
 
@@ -28,4 +29,21 @@ second step, you'll have (r-1, c-1), which will lead to a lot of revisited point
 hashSet of failed points that there isn't a path from and stop looking if there isn't a path from
 there.
 
-(similar: M62-UniquePaths)
+(similar: M62-UniquePaths) and (M63-UniquePathsII)
+
+8.3 Magic Index
+Use binary search, because the values are distinct, if a binary search finds a number thats
+larger than the index, then the value is to the left of it (probably, not guaranteed), but it
+definitely can't be to the right, because it's increasing and distinct and the index can't catch
+up. If the number for binary search is less than the index, then the value is to the right, for the
+reason above but vice versa.
+
+Follow-Up: If the values aren't distinct, there's still better than O(n). Consider that
+the values aren't distinct, but A[5] = 2. Then, we know that A[4] and A[3] can't be the magic
+index, so you take the min of (midIndex-1, midValue) or on the right side on the max of
+(midIndex+1, midValue).
+
+8.4 Power Set
+Backtracking problem. see M78 for solution. Store the result List of lists and also a tempList as
+well.
+(see: M78-Subsets) and (M90-SubsetsII)

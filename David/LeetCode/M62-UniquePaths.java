@@ -16,7 +16,7 @@ dp[i][j] = dp[i-1][j] + dp[i][j-1] because that's the only way you can get to th
 
 Runtime: O(mn): To fill in the dp array
 
-Space Complexity: O(1)
+Space Complexity: O(mn): Need a 2-d dp array that has m*n dimensions
 
 */
 
