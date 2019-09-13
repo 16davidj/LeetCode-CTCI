@@ -1,8 +1,6 @@
 TODO: https://leetcode.com/problems/wiggle-subsequence/
 TODO: https://leetcode.com/problems/letter-combinations-of-a-phone-number/
 TODO: https://leetcode.com/problems/find-median-from-data-stream/
-TODO: https://leetcode.com/problems/permutations/discuss/18239/A-general-approach-to-backtracking-questions-in-Java-(Subsets-Permutations-Combination-Sum-Palindrome-Partioning)
-
 TODO: best time to sell and buy stock
 
 8.1 Triple Step
@@ -47,3 +45,5 @@ index, so you take the min of (midIndex-1, midValue) or on the right side on the
 Backtracking problem. see M78 for solution. Store the result List of lists and also a tempList as
 well.
 (see: M78-Subsets) and (M90-SubsetsII)
+
+8.5
