@@ -1,6 +1,4 @@
 TODO: https://leetcode.com/problems/wiggle-subsequence/
-TODO: https://leetcode.com/problems/letter-combinations-of-a-phone-number/
-TODO: https://leetcode.com/problems/find-median-from-data-stream/
 TODO: best time to sell and buy stock
 
 8.1 Triple Step

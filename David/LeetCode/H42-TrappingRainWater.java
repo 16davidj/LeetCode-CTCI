@@ -6,12 +6,13 @@ Description: Given n non-negative integers representing an elevation map where t
 bar is 1, compute how much water it is able to trap after raining.
 
 Solution:
-This is the DP solution, not the most efficient
+This is the DP solution, not the most efficient, but it gets the tallest wall from the left
+and from the right for each index, and then calculates how much water you can fit in that cell
+given those heights.
 
+Runtime: O(N)
 
-Runtime:
-
-Space Complexity:
+Space Complexity: O(N) to keep the DP arrays
 
 */
 

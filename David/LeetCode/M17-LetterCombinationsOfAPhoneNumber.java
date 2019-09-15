@@ -13,12 +13,14 @@ Example:
 Input: "23"
 Output: ["ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"].
 
-Solution:
+Solution: Basic backtracking solution
 
 
-Runtime:
+Runtime: O(N * 4^N): There are a max of 4 characters for a specific character. This causes the
+recursion to split into 4 different subtrees, but for N characters
 
-Space Complexity:
+Space Complexity: O(3^N * 4^M): This is the max amount of solutions, where there are n characters
+and m characters with 4 letters.
 
 */
 
