@@ -29,6 +29,8 @@ at a certain place (partiton 2 means 2 elements to the left). It is like binary 
 you search for the right place to partition X such that it has a elements and nums2 has b elements
 to the left, where the total elements to the left will give you the median.
 
+Youtube Video: https://www.youtube.com/watch?v=LPFhl65R7ww
+
 Runtime: O(log(min(m, n)))
 
 Space Complexity: O(1)

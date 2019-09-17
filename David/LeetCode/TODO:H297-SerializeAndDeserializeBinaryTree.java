@@ -13,7 +13,6 @@ be serialized to a string and this string can be deserialized to the original tr
 
 Solution:
 
-
 Runtime:
 
 Space Complexity:
