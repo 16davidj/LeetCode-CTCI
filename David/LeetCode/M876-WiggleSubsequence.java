@@ -35,13 +35,38 @@ Follow up:
 Can you do it in O(n) time?
 
 Solution:
+This is a DP solution, with two dp-arrays. This is because a dp solution is technically how
+much the longest subsequence is up to a certain index. However, you also need to know another
+dimension. Was the last index going up or down? Therefore, you need two arrays to keep track
+of if an array is going up or down. you can't have one-dp array and set a boolean variable to
+true or false (if its going up or down) because then it's N^2, because when you add a value, you
+have to see which subsequence of the original array you're adding to, and if its bigger than
+i-1. Keeping two dp arrays would allow you to keep track of the possible solutions.
 
-Runtime:
-
-Space Complexity:
+Runtime: O(n)
+Space Complexity: O(n)
 
 */
 
 public int wiggleMaxLength(int[] nums) {
-
+  int[] up = new int[nums.length];
+  int[] down = new int[nums.length];
+  if(nums.length == 0) {
+    return 0;
+  }
+  up[0] = 1;
+  down[0] = 1;
+  for(int i = 1; i < nums.length; i++) {
+    if(nums[i] > nums[i-1]) {
+      up[i] = down[i] + 1;
+      down[i] = down[i-1];
+    } else if(nums[i] < nums[i-1]) {
+      down[i] = up[i-1] + 1;
+      up[i] = up[i-1];
+    } else {
+      down[i] = down[i-1];
+      up[i] = up[i-1];
+    }
+  }
+  return Math.max(up[nums.length - 1], down[nums.length - 1]);
 }
