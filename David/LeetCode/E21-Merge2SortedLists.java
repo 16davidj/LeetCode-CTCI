@@ -16,7 +16,6 @@ then also advance the prev node.
 
 Imagine it almost like connecting the dots, with the node being the dots.
 
-
 Runtime: O(N)
 
 Space Complexity: O(1)
