@@ -96,7 +96,6 @@ public int myAtoi(String str) {
             }
         }
         if(negative) {
-            System.out.println("hi");
             return 0 - val;
         }
         return val;
