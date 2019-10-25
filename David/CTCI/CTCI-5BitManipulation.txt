@@ -1,0 +1,43 @@
+5.1 Insertion
+1. 0 out indices that you needs (indices i to j, inclusive, should be 0'd out)
+2. shift the value of M i places
+3. Get the OR of both
+
+steps 2 and 3 are pretty self-explanatory.
+To achieve the mask for step 1, you want everything else besides i to j to be 1. This means
+you have to create the left and right side. To create the left side, have a ~0, which is all 1s,
+and shift j+1 times. Then, have a 1 at i, and then subtract 1 to get the 1's on the right side.
+
+Thus, the mask is
+(~0 << (j + 1) | (1 << i) - 1)
+
+mask the number with the mask with &
+(N & (~0 << (j + 1) | (1 << i) - 1)) | (M << i)
+
+5.2 convert double to Binary
+go from 2^32 to 2^-32, at each point, if the power is less than the value, then we can include
+that bit. We then subtract that power value. After 2^0, we include the decimal, and do 1/2^power.
+
+5.3 Flip Bit to Win
+skipped, look at them one by one, create intervals with straight 0's or straight 1's
+
+5.4
+skipped, see solution
+
+5.5 Debugger
+it finds if n is a power of 2
+
+5.6 Conversion
+XOR the values, and then count how many 1's there are in the XOR
+
+5.7 Pairwise Swap
+Instead of swapping every pair of binary places, you can just shift all the odd indices left and
+all the even indices right. To get a mask to get all the odd values, you have to & the value with a
+mask of OxAAAAAAAA, since A is 1010, where 1 is in all the odd spots. Same goes to get a mask for
+all the even values, you just have Ox55555555, where it is 0101, but for all 32 bits. Then, you
+shift the odd ones >>> (unsigned, you want to fill in the leftmost bit with 0), and even with << 1,
+and then and them together
+
+5.8
+skipped, see solution
+key takeaway: if you want all 1's, then use OxFF for a byte, then shift that or ! it.
