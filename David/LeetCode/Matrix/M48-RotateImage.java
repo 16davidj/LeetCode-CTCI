@@ -21,24 +21,26 @@ its the same order, so its, [j][end]. Moreover, you want to do j = first; j < en
 because the corners are technically part of both a row and column twice, so you don't want to
 change it twice.
 
+Solution II: (Updated 10.26): You want to think about layer as being the fixed part of the
+rotate part, it only changes where you start or end. j is the one that's always changing.
+j should start at layer and end matrix.length - 1 - layer because of the offset/layering
 
 */
-public void rotate(int[][] matrix) {
+class Solution {
+    public void rotate(int[][] matrix) {
   if(matrix.length == 0) {
     return; //base case
   }
 
-  int layers = matrix[0].length/2; //dimension of n
-  for(int layer = 0; layer < layers; layer++) {
-    int first = layer;
-    int end = matrix[0].length - 1 - layer;
-    for(int j = first; j < end; j++) {
-      int offset = j - first;
-      int temp = matrix[first][j];
-      matrix[first][j] = matrix[end - offset][first];
-      matrix[end - offset][first] = matrix[end][end - offset];
-      matrix[end][end - offset] = matrix[j][end];
-      matrix[j][end] = temp;
+  int layers = matrix.length/2; //dimension of n
+  for(int layer = 0; layer < layers; layer++) { //layer doesn't change
+    for(int j = layer; j < matrix.length - 1 - layer; j++) {
+      int temp = matrix[layer][j];
+      matrix[layer][j] = matrix[matrix.length - 1 - j][layer];
+      matrix[matrix.length - 1 - j][layer] = matrix[matrix.length - 1 - layer][matrix.length - 1 - j];
+      matrix[matrix.length - 1 - layer][matrix.length - 1 - j] = matrix[j][matrix.length - 1 - layer];
+      matrix[j][matrix.length - 1 - layer] = temp;
     }
   }
+}
 }

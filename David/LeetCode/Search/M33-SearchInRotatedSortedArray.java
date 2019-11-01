@@ -22,7 +22,7 @@ you have to compare the target to both sides to see where it may lie.)
 
 Runtime: O(log n)
 
-Space Complexity:
+Space Complexity: O(1)
 
 */
 
