@@ -14,6 +14,9 @@ Essentially a DFS for the nodes you want to find, but when you find them, popula
 At some point, the two populated nodes will meet as right and left at a root node, and then
 you want to populate that root node up and eventually return it.
 
+Note that the problem changes when you're not guaranteed that both values are in the tree, and
+that you need to have to keep track of a count for all the nodes that you find.
+
 Runtime:
 Space complexity: O(log n): log n, height of the tree, recursive levels
 Runtime complexity: O(n): worst case, you run through all the nodes
