@@ -32,12 +32,12 @@ The input prerequisites is a graph represented by a list of edges, not adjacency
 more about how a graph is represented.
 You may assume that there are no duplicate edges in the input prerequisites.
 
-Solution: ONLY WORKS IF THERE ISN'T A CYCLE
+Solution:
 
-Runtime:
+Runtime: O(n) for all nodes
 
 
-Space Complexity:
+Space Complexity: O(n) for al nodes
 
 */
 
@@ -72,6 +72,8 @@ class Solution {
       return res;
     }
 
+//currVisited is a temporary array that keeps track of what nodes you've visited in this current
+//recursion call, so it checks for cycles
     private boolean topSortDFS(Map<Integer, List<Integer>> graph, Stack<Integer> order, boolean[] visited, boolean[] currVisited, int node) {
       visited[node] = true;
       if(graph.get(node) == null) {

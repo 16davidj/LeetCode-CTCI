@@ -23,9 +23,9 @@ All inputs are guaranteed to be non-empty strings.
 Solution:
 
 
-Runtime:
+Runtime: ?
 
-Space Complexity:
+Space Complexity: ?
 
 */
 
@@ -37,10 +37,6 @@ class Trie {
         children = new HashMap<>();
         isWord = false;
     }
-    public Trie(boolean isW) {
-        children = new HashMap<>();
-        isWord = isW;
-    }
 
     /** Inserts a word into the trie. */
     public void insert(String word) {
@@ -50,7 +46,7 @@ class Trie {
       }
       Character c = word.charAt(0);
       if(!this.children.containsKey(c)) {
-        Trie tempTrie = new Trie(word.length() == 1);
+        Trie tempTrie = new Trie();
         this.children.put(c, tempTrie);
       }
       this.children.get(c).insert(word.substring(1));

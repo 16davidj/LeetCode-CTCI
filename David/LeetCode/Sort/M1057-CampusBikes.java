@@ -18,8 +18,6 @@ p2.y|.
 Return a vector ans of length N, where ans[i] is the index (0-indexed) of the bike that the i-th
 worker is assigned to.
 
-
-
 Example 1:
 Input: workers = [[0,0],[2,1]], bikes = [[1,2],[3,3]]
 Output: [1,0]
@@ -40,17 +38,52 @@ Note:
 All worker and bike locations are distinct.
 1 <= workers.length <= bikes.length <= 1000
 
-Solution: Bucket Sort
+Solution: Use a PQ with an array of 3 that compares the distances, bike index, and then worker
+index. Then greedily take out from the pq and fill the result
 
+Runtime: O(mn log(mn))
 
-Runtime:
-
-Space Complexity:
+Space Complexity: O(m*n), where m is the number of workers and n is the number of bikes
 
 */
 
+//first one is a PQ
 class Solution {
     public int[] assignBikes(int[][] workers, int[][] bikes) {
+      PriorityQueue<int[]> pq = new PriorityQueue<>((a, b) -> {
+        if(a[0] == b[0]) {
+          if(a[1] == b[1]) {
+            return a[2] - b[2];
+          } else {
+            return a[1] - b[1];
+          }
+        } else {
+          return a[0] - b[0];
+        }});
+      for(int i = 0; i < workers.length; i++) {
+        for(int j = 0; j < bikes.length; j++) {
+          int[] dist = new int[3];
+          dist[0] = distance(workers[i], bikes[j]);
+          dist[1] = i;
+          dist[2] = j;
+          pq.add(dist);
+        }
+      }
+     int[] res = new int[workers.length];
+      Set<Integer> reservedBikes = new HashSet<>();
+      Arrays.fill(res, -1);
 
+      while(reservedBikes.size() < workers.length) {
+        int[] reserv = pq.poll();
+        if(res[reserv[1]] == -1 && !reservedBikes.contains(reserv[2])) {
+          res[reserv[1]] = reserv[2];
+          reservedBikes.add(reserv[2]);
+        }
+      }
+      return res;
+    }
+
+    public int distance(int[] worker, int[] bike) {
+      return Math.abs(worker[0] - bike[0]) + Math.abs(worker[1] - bike[1]);
     }
 }

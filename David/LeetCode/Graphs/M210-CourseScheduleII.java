@@ -43,7 +43,7 @@ the nodes with 0 dependencies in a queue.
 Runtime: O(n), process every node, but subtracting from depenCount and adding to Queue are
 
 
-Space Complexity: O(E + N), you have a map with E edges and a Queue and array with n nodes
+Space Complexity: O(E + N), you have a map with E edges and a Queue to keep N nodes
 
 */
 

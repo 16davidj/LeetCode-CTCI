@@ -82,7 +82,6 @@ class Solution {
             }
         }
 
-        System.out.println(Arrays.toString(roots));
         for(int i = 1; i < board.length - 1; i++) {
             for(int j = 1; j < board[0].length - 1; j++) {
                 int index = i*board[0].length + j;
